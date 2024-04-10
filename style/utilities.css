@@ -1,0 +1,27 @@
+.margin-top{
+    margin-top: 15px;
+}
+
+.clickable:hover{
+
+    cursor: pointer;
+
+}
+
+.yellow-hover{
+    color: white;
+}
+
+
+.yellow-hover:hover{
+    color: yellow;
+}
+
+.flex-center{
+    display: flex;
+    justify-content: center;
+}
+
+.hidden{
+    display: none;
+}
