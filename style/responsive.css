@@ -1,0 +1,79 @@
+@media screen and (max-width: 900px) {
+
+    /* HOME PAGE */
+
+    .img-poster img{
+        height: 80%;
+        width: 100%;
+    }
+
+    .about-us{
+        font-size: 14px;
+    }
+
+    .img-poster {
+        height: 80%;
+        width: 100vw;
+    }
+
+    .side-filter{
+        margin-left: 0px;
+        font-size: 18px;
+    }
+
+    .side-filter h1{
+        font-size: 28px;
+    }
+
+    .side-filter h3{
+        font-size: 20px;
+    }
+
+    .prod-col{
+        flex-direction: column;
+    }
+
+    .card img{
+        height: 180px;
+        width: 100%;
+    }
+
+    .prod-title{
+        justify-content: start;
+    }
+
+    .card{
+        width: 200px;
+    }
+
+    .card-body a {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 50px;
+        font-size: 14px;
+    }
+
+    .prods-grid{
+        width: 100vw;
+    }
+
+    /* ================================ */
+
+    /* REG PROD */
+
+    .register-prod{
+        width: 100%;
+    }
+
+    .form-flex{
+        flex-direction: column;
+    }
+
+    .cart-sect{
+        width: 100vw;
+        font-size: 15px;
+    }
+
+    
+}
