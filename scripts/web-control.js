@@ -72,8 +72,8 @@ function switchSections(filter){
     const innerhtml = filter.id
     if(!isLogged){
         switch(innerhtml){
-            case "home": shower('prod-sect'); hider('register-prod');hider("cart-sect");break;
-            case "reg": shower('register-prod'); hider('prod-sect');hider("cart-sect"); break;
+            case "home": shower('prod-sect'); hider('register-prod');hider("cart-sect"); hider('loginpage'); break;
+            case "reg": shower('register-prod'); hider('prod-sect');hider("cart-sect"); hider('loginpage'); break;
             case "cart": hider('prod-sect'); hider('register-prod');hider("cart-sect"); shower('loginpage'); updateCart(); break;
             case "loginpage": shower('loginpage');  hider('prod-sect'); hider('register-prod'); hider("cart-sect"); break;
         }
@@ -180,4 +180,14 @@ function removePriceFilter(){
 
     priceFilter = null
     filter()
+}
+
+
+function switchToMakeAccount() {
+  let cad_fields = $(".cad");
+  let header = $("#create-login-header");
+  header.html("Criar Conta")
+  cad_fields.removeClass("hidden");
+  let loginButtonContainers = $(".button-account-container");
+  loginButtonContainers.addClass("hidden")
 }
