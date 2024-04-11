@@ -208,7 +208,7 @@
                   <label for="input-cpf" class="roboto">CPF: </label>
                 </div>
                 
-                <input type="password" class="form-control" id="input-cpf">
+                <input type="text" maxlength="14" onkeyup="cpfAdjusting()" class="form-control" id="input-cpf">
               </div>
               <div class="button-account-container flex-center">
                 <button type="button" onclick="loginUser()"  class="btn btn-outline-dark">Login</button>
