@@ -27,6 +27,99 @@ function nameValidationBlur(id){
 
 }
 
+function hasNecessaryCharacters(array, text){
+
+    for(let i in array){
+        if(!text.includes(array[i])){
+            return false;
+        }
+    }
+
+    return true;
+    
+}
+
+function hasAtLeastOne(array, text){
+    let identifiers = 0;
+    for(let i in array){
+        if(text.includes(array[i])){
+            identifiers++;
+            break;
+        }
+    }
+
+    return identifiers > 0;
+}
+
+function hasAnyEmailProvider(text){
+    return hasAtLeastOne(["gmail", "outlook", "hotmail"], text);
+}
+
+function hasNecessaryCharactersEmail(text){
+    let hasBasics = hasNecessaryCharacters(["@", ".com"], text);
+
+    return hasBasics;
+}
+
+
+
+function validateEmailHover(id){
+    let element = document.getElementById(id);
+    let text = element.value;
+    element.setAttribute("title", "")
+    let errCount = 0;
+    //Checagem se o campo está vazio 
+    if(isEmpty(id)){
+        if(element.title.length < 1){
+            element.setAttribute("title", element.title += "Campo está vazio!");
+        } else {
+            element.setAttribute("title", element.title += "\nCampo está vazio!")
+        }
+        errCount++
+    }
+
+    if(!hasNecessaryCharactersEmail(text)){
+
+        if(element.title.length < 1){
+            element.setAttribute("title", element.title += "Email deve incluir @ e .com");
+        } else {
+            element.setAttribute("title", element.title += "\nEmail deve incluir @ e .com!")
+        }
+        errCount++
+
+    }
+
+    if(!hasAnyEmailProvider(text)){
+        if(element.title.length < 1){
+            element.setAttribute("title", element.title += "Email deve possuir um provedor válido");
+        } else {
+            element.setAttribute("title", element.title += "\nEmail deve possuir um provedor válido!")
+        }
+        errCount++
+    }
+
+
+    if(errCount < 1){
+        element.setAttribute("title", element.title += ":D");
+    }
+
+    
+
+}
+
+function emailValidationBlur(id){
+
+    let element = $("#" + id);
+    let text = element.val();
+    if(isEmpty(id)|| !hasNecessaryCharactersEmail(text)|| !hasAnyEmailProvider(text)){
+        element.addClass("red-error");
+    } else {
+        element.removeClass("red-error");
+    }
+    
+
+}
+
 function hasTwoFullValues(id){
     let element = $("#" + id);
     let array = element.val().split(" ")
@@ -80,7 +173,6 @@ function nameValidationHover(id){
 
 function eliminateUnwantedChars(unwantedchars, text){
     let newText = text;
-    newText.replace("1", "")
     for(let i in unwantedchars){
         if(newText.includes(unwantedchars[i])){
             newText = newText.replace(unwantedchars[i], "");
