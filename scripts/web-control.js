@@ -186,9 +186,13 @@ function removePriceFilter(){
 function switchToMakeAccount() {
   let cad_fields = $(".cad");
   let header = $("#create-login-header");
+  let greenbutton = $("#button-cad-cont");
   header.html("Criar Conta")
   cad_fields.removeClass("hidden");
   let loginButtonContainers = $(".button-account-container");
+  greenbutton.show();
+  greenbutton.css("display", "flex");
+  greenbutton.css("jsutify-content", "center");
   loginButtonContainers.addClass("hidden")
 }
 

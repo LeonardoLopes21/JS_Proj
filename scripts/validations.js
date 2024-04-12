@@ -195,9 +195,6 @@ function nameValidationHover(id){
 }
 
 function eliminateUnwantedChars(unwantedchars, text){
-    if(!isCreatingAccount()){
-        return
-    }
     let newText = text;
     for(let i in unwantedchars){
         if(newText.includes(unwantedchars[i])){
@@ -450,6 +447,83 @@ function cepAdjuster(id){
 
     if(cepval.length == 5){
         cep.val(cepval += "-")
+    }
+
+}
+
+function cdcAdjuster(id){
+
+    let cdc = $("#" + id);
+
+    let cdcval = $("#" + id).val();
+
+    let unwantedchars = "aqwertyuiopáéíóúãõsadfghjklzxcvbnm,.;/]~ç[´p'?:><}^ç{`!@#$%¨&*()\\";
+
+    let unwantedcharsUpperCase = unwantedchars.toUpperCase();
+
+    cdcval = eliminateUnwantedChars(unwantedchars, cdcval);
+
+    cdcval = eliminateUnwantedChars(unwantedcharsUpperCase, cdcval)
+
+    if(cdcval.length == 4 || cdcval.length == 9 || cdcval.length == 14 ){
+        cdc.val(cdcval += " ")
+    }
+
+    cdc.val(cdcval);
+
+}
+
+function cdcValidationHover(id){
+
+    let element = $("#" + id)[0];
+    element.setAttribute("title", "");
+    let errCount = 0;
+
+    if(isEmpty(id)){
+        if(element.title.length < 1){
+            element.setAttribute("title", element.title += "Campo está vazio!");
+        } else {
+            element.setAttribute("title", element.title += "\nCampo está vazio!")
+        }
+        errCount++
+        return;
+    }
+
+    if(!hasAtLeastOne(["3", "4", "5", "6"],element.value[0])){
+
+        if(element.title.length < 1){
+            element.setAttribute("title", element.title += "Deve começar com 3, 4, 5, 6!");
+        } else {
+            element.setAttribute("title", element.title += "\nDeve começar com 3, 4, 5, 6!")
+        }
+        errCount++
+
+
+    }
+
+    if(element.value.length < 19){
+
+        if(element.title.length < 1){
+            element.setAttribute("title", element.title += "Cartão Incompleto!");
+        } else {
+            element.setAttribute("title", element.title += "\nCartão Incompleto!")
+        }
+        errCount++
+
+
+    }
+    
+
+}
+
+function cdcValidationBlur(id){
+
+    let element = $("#" + id);
+    let elementval = element.val()
+    if(isEmpty(id) || !hasAtLeastOne(["3", "4", "5", "6"],elementval[0]) || elementval.length < 19){
+        element.addClass("red-error");
+    } else {
+        element.removeClass("red-error");
     }
 
 }
