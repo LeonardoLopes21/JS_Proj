@@ -1,4 +1,4 @@
-let isLogged = false;
+let isLogged = localStorage.getItem("isLogged");
 
 function loginUser(){
     let user = checkIfUserExists();
