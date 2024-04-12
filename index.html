@@ -229,7 +229,7 @@
 
               <div class="cad mb-3 form-flex hidden">
                 <div class="label-container">
-                  <label for="input-age" class="roboto">Idade: </label>
+                  <label for="input-age" class="roboto">Data de Nascimento: </label>
                 </div>
                 
                 <input type="date" onblur="ageValidationBlur('input-age')" onmouseover="ageValidationHover('input-age')" class="form-control" id="input-age">
@@ -260,18 +260,30 @@
 
               <div class="cad mb-3 form-flex hidden">
                 <div class="label-container">
-                  <label for="input-age" class="roboto">CEP: </label>
+                  <label for="input-cep" class="roboto">CEP: </label>
                 </div>
                 
                 <input type="text" onkeyup="cepAdjuster('input-cep')" maxlength="9" onblur="cepValidationBlur('input-cep')" onmouseover="cepValidationHover('input-cep')" class="form-control" id="input-cep">
               </div>
 
+              <div class="cad mb-3 form-flex hidden">
+                <div class="label-container">
+                  <label for="input-cdc" class="roboto">Cartão de Crédito: </label>
+                </div>
+                
+                <input type="text" onkeyup="cdcAdjuster('input-cdc')" maxlength="19" onblur="cdcValidationBlur('input-cdc')" onmouseover="cdcValidationHover('input-cdc')" class="form-control" id="input-cdc">
+              </div>
+
               <div class="button-account-container flex-center">
-                <button type="button" onclick="loginUser()"  class="btn btn-outline-dark">Login</button>
+                <button type="button" onclick="loginUser()"  class="btn btn-warning">Login</button>
+              </div>
+
+              <div class="hider button-account-container flex-center" id="button-cad-cont">
+                <button type="button" onclick="registerUser()"  class="btn btn-outline-success">Cadastrar</button>
               </div>
 
               <div class="button-account-container">
-              <button type="button" class="btn btn-warning" onclick="switchToMakeAccount()" id="create-account-button"> <i>Não tenho conta!</i> </button>
+              <button type="button" class="btn btn-dark" onclick="switchToMakeAccount()" id="create-account-button"> <i>Não tenho conta!</i> </button>
               </div>
             </form>
 
