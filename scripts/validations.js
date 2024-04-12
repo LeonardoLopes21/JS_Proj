@@ -64,7 +64,7 @@ function hasNecessaryCharactersEmail(text){
 
 
 function validateEmailHover(id){
-    let element = document.getElementById(id);
+    let element = $("#" + id)[0];
     let text = element.value;
     element.setAttribute("title", "")
     let errCount = 0;
@@ -135,7 +135,7 @@ function hasTwoFullValues(id){
 }
 
 function nameValidationHover(id){
-    let element = document.getElementById(id);
+    let element = $("#" + id)[0];
     element.setAttribute("title", "")
     let errCount = 0;
     //Checagem se o campo está vazio 
@@ -180,6 +180,118 @@ function eliminateUnwantedChars(unwantedchars, text){
     }
 
     return newText;
+}
+
+function checkSpecialCharacters(text){
+    return hasAtLeastOne("!@#$%¨&*()_+;.,\\/", text)
+}
+
+
+function passwordValidationHover(id, idorigin){
+    let element = $("#" + id)[0];
+    let repeat = $("#" + idorigin)[0];
+    text = element.value;
+    element.setAttribute("title", "")
+    let errCount = 0;
+
+    if(!containNumbers(id)){
+
+        if(element.title.length < 1){
+            element.setAttribute("title", element.title += "Senha deve conter números!");
+        } else {
+            element.setAttribute("title", element.title += "\nSenha deve conter números!");
+        }
+        errCount++
+
+    }
+
+    if(text.length < 8){
+
+        if(element.title.length < 1){
+            element.setAttribute("title", element.title += "Senha deve conter pelo menos 8 caracteres!");
+        } else {
+            element.setAttribute("title", element.title += "\nSenha deve conter pelo menos 8 caracteres");
+        }
+        errCount++
+
+
+    }
+
+    if(!checkSpecialCharacters(text)){
+
+        if(element.title.length < 1){
+            element.setAttribute("title", element.title += "Senha possuir pelo menos um caracter especial!");
+        } else {
+            element.setAttribute("title", element.title += "\nSenha possuir pelo menos um caracter especial!");
+        }
+        errCount++
+
+    }
+
+    if(repeat.value != text){
+
+        repeat.classList.add("red-error")
+        
+    } else {
+        repeat.classList.remove("red-error");
+    }
+
+}
+
+
+function passwordValidationBlur(id, idorigin){
+
+    let element = $("#" + id);
+    let repeat = $("#" + idorigin)[0];
+    let text = element.val();
+    if(isEmpty(id)|| text.length < 8|| !checkSpecialCharacters(text)){
+        element.addClass("red-error");
+    } else {
+        element.removeClass("red-error");
+    }
+
+    if(repeat.value != text){
+
+        repeat.classList.add("red-error")
+        
+    } else {
+        repeat.classList.remove("red-error");
+    }
+
+}
+
+function repeatPasswordValidationHover(id, idorigin){
+
+    let element = $("#" + id)[0];
+    let elementorigin = $("#" + idorigin)[0];
+    element.setAttribute("title", "")
+    let errCount = 0;
+
+    if(elementorigin.value != element.value){
+
+        if(element.title.length < 1){
+            element.setAttribute("title", element.title += "Senhas devem ser iguais!");
+        } else {
+            element.setAttribute("title", element.title += "\nSenha devem ser iguais!");
+        }
+        errCount++
+
+    }
+
+}
+
+function repeatPasswordValidationBlur(id, idorigin){
+
+    let element = $("#" + id);
+    let elementorigin = $("#" + idorigin);
+    let textpassr = element.val();
+    let textpass = elementorigin.val(); 
+    if(textpass != textpassr){
+        element.addClass("red-error");
+    } else {
+        element.removeClass("red-error");
+    }
+
 }
 
 function cpfAdjusting(){

@@ -193,7 +193,7 @@
                   <label for="input-pass" class="roboto">Senha: </label>
                 </div>
                 
-                <input type="password" class="form-control" id="input-pass">
+                <input type="password" onblur="passwordValidationBlur('input-pass', 'input-pass-again')" onmouseover="passwordValidationHover('input-pass', 'input-pass-again')" class="form-control" id="input-pass">
               </div>
 
               <div class="cad mb-3 form-flex hidden">
@@ -201,7 +201,7 @@
                   <label for="input-pass-again" class="roboto">Repita sua senha: </label>
                 </div>
                 
-                <input type="password" class="form-control" id="input-pass-again">
+                <input type="password" class="form-control" onblur="repeatPasswordValidationBlur('input-pass-again', 'input-pass')" onmouseover="repeatPasswordValidationHover('input-pass-again', 'input-pass')" id="input-pass-again">
               </div>
               <div class="cad mb-3 form-flex hidden">
                 <div class="label-container">
