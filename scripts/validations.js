@@ -3,6 +3,15 @@ function isEmpty(id){
     return element.val().length < 1;
 }
 
+
+function isCreatingAccount(){
+
+    let header = $("#create-login-header").html();
+
+    return header != "Login"
+
+}
+
 function containNumbers(id){
     let numbers = "0123456789"
     let element = $("#" + id);
@@ -16,6 +25,10 @@ function containNumbers(id){
 }
 
 function nameValidationBlur(id){
+
+    if(!isCreatingAccount()){
+        return
+    }
 
     let element = $("#" + id);
     if(isEmpty(id)||containNumbers(id)||!hasTwoFullValues(id)){
@@ -64,6 +77,7 @@ function hasNecessaryCharactersEmail(text){
 
 
 function validateEmailHover(id){
+    
     let element = $("#" + id)[0];
     let text = element.value;
     element.setAttribute("title", "")
@@ -109,6 +123,9 @@ function validateEmailHover(id){
 
 function emailValidationBlur(id){
 
+    if(!isCreatingAccount()){
+        return
+    }
     let element = $("#" + id);
     let text = element.val();
     if(isEmpty(id)|| !hasNecessaryCharactersEmail(text)|| !hasAnyEmailProvider(text)){
@@ -121,6 +138,9 @@ function emailValidationBlur(id){
 }
 
 function hasTwoFullValues(id){
+    if(!isCreatingAccount()){
+        return
+    }
     let element = $("#" + id);
     let array = element.val().split(" ")
     let filteredArray = []
@@ -135,6 +155,9 @@ function hasTwoFullValues(id){
 }
 
 function nameValidationHover(id){
+    if(!isCreatingAccount()){
+        return
+    }
     let element = $("#" + id)[0];
     element.setAttribute("title", "")
     let errCount = 0;
@@ -172,6 +195,9 @@ function nameValidationHover(id){
 }
 
 function eliminateUnwantedChars(unwantedchars, text){
+    if(!isCreatingAccount()){
+        return
+    }
     let newText = text;
     for(let i in unwantedchars){
         if(newText.includes(unwantedchars[i])){
@@ -188,6 +214,9 @@ function checkSpecialCharacters(text){
 
 
 function passwordValidationHover(id, idorigin){
+    if(!isCreatingAccount()){
+        return
+    }
     let element = $("#" + id)[0];
     let repeat = $("#" + idorigin)[0];
     text = element.value;
@@ -241,6 +270,10 @@ function passwordValidationHover(id, idorigin){
 
 function passwordValidationBlur(id, idorigin){
 
+    if(!isCreatingAccount()){
+        return
+    }
+
     let element = $("#" + id);
     let repeat = $("#" + idorigin)[0];
     let text = element.val();
@@ -262,6 +295,10 @@ function passwordValidationBlur(id, idorigin){
 
 function repeatPasswordValidationHover(id, idorigin){
 
+    if(!isCreatingAccount()){
+        return
+    }
+
     let element = $("#" + id)[0];
     let elementorigin = $("#" + idorigin)[0];
     element.setAttribute("title", "")
@@ -281,6 +318,10 @@ function repeatPasswordValidationHover(id, idorigin){
 }
 
 function repeatPasswordValidationBlur(id, idorigin){
+
+    if(!isCreatingAccount()){
+        return
+    }
 
     let element = $("#" + id);
     let elementorigin = $("#" + idorigin);
