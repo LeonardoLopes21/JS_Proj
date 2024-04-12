@@ -300,11 +300,11 @@ function repeatPasswordValidationHover(id, idorigin){
     }
 
     let element = $("#" + id)[0];
-    let elementorigin = $("#" + idorigin)[0];
+    let elementorigin = $("#" + idorigin);
     element.setAttribute("title", "")
     let errCount = 0;
 
-    if(elementorigin.value != element.value){
+    if(elementorigin.val() != element.value){
 
         if(element.title.length < 1){
             element.setAttribute("title", element.title += "Senhas devem ser iguais!");
@@ -402,6 +402,54 @@ function ageValidationBlur(id){
         element.addClass("red-error");
     } else {
         element.removeClass("red-error");
+    }
+
+}
+
+
+function cepValidationHover(id){
+
+    if(!isCreatingAccount()){
+        return
+    }
+    let element = $("#" + id)[0];
+    element.setAttribute("title", "")
+    let errCount = 0;
+
+    if(isEmpty(id)){
+        if(element.title.length < 1){
+            element.setAttribute("title", element.title += "Campo está vazio!");
+        } else {
+            element.setAttribute("title", element.title += "\nCampo está vazio!")
+        }
+        errCount++
+    }
+
+}
+
+function cepValidationBlur(id){
+
+    if(!isCreatingAccount()){
+        return
+    }
+
+    let element = $("#" + id);
+    if(isEmpty(id)){
+        element.addClass("red-error");
+    } else {
+        element.removeClass("red-error");
+    }
+
+}
+
+function cepAdjuster(id){
+
+    let cep = $("#" + id);
+
+    let cepval = $("#" + id).val();
+
+    if(cepval.length == 5){
+        cep.val(cepval += "-")
     }
 
 }

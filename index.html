@@ -208,7 +208,7 @@
                   <label for="input-cpf" class="roboto">CPF: </label>
                 </div>
                 
-                <input type="text" maxlength="14" onkeyup="cpfAdjusting()" class="form-control" id="input-cpf">
+                <input type="text" maxlength="14" onblur="repeatPasswordValidationBlur('input-cpf')" onmouseover="repeatPasswordValidationHover('input-cpf')"  onkeyup="cpfAdjusting()" class="form-control" id="input-cpf">
               </div>
 
               <div class="cad mb-3 form-flex hidden">
@@ -256,6 +256,14 @@
                 </div>
 
 
+              </div>
+
+              <div class="cad mb-3 form-flex hidden">
+                <div class="label-container">
+                  <label for="input-age" class="roboto">CEP: </label>
+                </div>
+                
+                <input type="text" onkeyup="cepAdjuster('input-cep')" maxlength="9" onblur="cepValidationBlur('input-cep')" onmouseover="cepValidationHover('input-cep')" class="form-control" id="input-cep">
               </div>
 
               <div class="button-account-container flex-center">
