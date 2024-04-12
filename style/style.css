@@ -138,3 +138,11 @@
 .loginpage{
     width: 1900px;
 }
+
+.other-gen-form{
+    display: block; width: 100%;
+}
+
+.max-width{
+    width: 100%;
+}

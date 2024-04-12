@@ -356,3 +356,55 @@ function cpfAdjusting(){
     }
 
 }
+
+function getAge(dateString) {
+    var today = new Date();
+    var birthDate = new Date(dateString);
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    return age;
+}
+
+function ageValidationHover(id){
+
+    if(!isCreatingAccount()){
+        return
+    }
+    let element = $("#" + id)[0];
+    element.setAttribute("title", "")
+    let errCount = 0;
+    let age = getAge(element.value)
+    if(age < 18){
+
+        if(element.title.length < 1){
+            element.setAttribute("title", element.title += "Você deve ter pelo menos 18 anos para fazer sua conta!");
+        } else {
+            element.setAttribute("title", element.title += "\nVocê deve ter pelo menos 18 anos para fazer sua conta!!");
+        }
+        errCount++
+
+    }
+
+}
+
+function ageValidationBlur(id){
+
+    if(!isCreatingAccount()){
+        return
+    }
+
+    let element = $("#" + id);
+    let age = getAge(element.val());
+    if(age < 18){
+        element.addClass("red-error");
+    } else {
+        element.removeClass("red-error");
+    }
+
+}
+
+
+

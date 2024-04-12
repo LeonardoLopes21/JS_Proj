@@ -210,6 +210,54 @@
                 
                 <input type="text" maxlength="14" onkeyup="cpfAdjusting()" class="form-control" id="input-cpf">
               </div>
+
+              <div class="cad mb-3 form-flex hidden">
+                <div class="label-container">
+                  <label for="input-fath" class="roboto">Nome do Pai: </label>
+                </div>
+                
+                <input type="text" onblur="nameValidationBlur('input-fath')" onmouseover="nameValidationHover('input-fath')" class="form-control" id="input-fath">
+              </div>
+
+              <div class="cad mb-3 form-flex hidden">
+                <div class="label-container">
+                  <label for="input-moth" class="roboto">Nome da Mãe: </label>
+                </div>
+                
+                <input type="text" onblur="nameValidationBlur('input-moth')" onmouseover="nameValidationHover('input-moth')" class="form-control" id="input-moth">
+              </div>
+
+              <div class="cad mb-3 form-flex hidden">
+                <div class="label-container">
+                  <label for="input-age" class="roboto">Idade: </label>
+                </div>
+                
+                <input type="date" onblur="ageValidationBlur('input-age')" onmouseover="ageValidationHover('input-age')" class="form-control" id="input-age">
+              </div>
+
+              <div class="cad mb-3 form-flex hidden">
+                <div class="label-container">
+                  <label for="input-gen" class="roboto">Gênero: </label>
+                </div>
+
+                <div class="other-gen-form">
+                  <select class="form-select" onchange="genderSelectManager('input-gen')" aria-label="Default select example" id="input-gen">
+                    <option hidden selected>Gênero</option>
+                    <option value="m">Masculino</option>
+                    <option value="f">Feminino</option>
+                    <option value="o">Outro</option>
+                  </select>
+  
+                  <div class="hidden" id="gen-other-div">
+                    <input type="text" id="other-gen" class="form-control max-width">
+                  </div>
+                  
+                  
+                </div>
+
+
+              </div>
+
               <div class="button-account-container flex-center">
                 <button type="button" onclick="loginUser()"  class="btn btn-outline-dark">Login</button>
               </div>

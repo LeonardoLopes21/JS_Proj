@@ -191,3 +191,18 @@ function switchToMakeAccount() {
   let loginButtonContainers = $(".button-account-container");
   loginButtonContainers.addClass("hidden")
 }
+
+
+function genderSelectManager(id){
+  let select = $("#" + id);
+
+  if(select.val() == "o"){
+
+    $("#gen-other-div").show();
+
+  } else {
+
+    $("#gen-other-div").hide();
+
+  }
+}
