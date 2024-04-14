@@ -77,6 +77,10 @@ function hasNecessaryCharactersEmail(text){
 
 
 function validateEmailHover(id){
+
+    if(!isCreatingAccount()){
+        return
+    }
     
     let element = $("#" + id)[0];
     let text = element.value;
@@ -112,6 +116,16 @@ function validateEmailHover(id){
         errCount++
     }
 
+    if(verifyIfEmailExists(userList, text)){
+        if(element.title.length < 1){
+            element.setAttribute("title", element.title += "Email já está em uso");
+        } else {
+            element.setAttribute("title", element.title += "\nEmail já está em uso!")
+        }
+        errCount++
+
+    }
+
 
     if(errCount < 1){
         element.setAttribute("title", element.title += ":D");
@@ -128,7 +142,7 @@ function emailValidationBlur(id){
     }
     let element = $("#" + id);
     let text = element.val();
-    if(isEmpty(id)|| !hasNecessaryCharactersEmail(text)|| !hasAnyEmailProvider(text)){
+    if(isEmpty(id)|| !hasNecessaryCharactersEmail(text)|| !hasAnyEmailProvider(text) || verifyIfEmailExists(userList, text)){
         element.addClass("red-error");
     } else {
         element.removeClass("red-error");
@@ -254,14 +268,6 @@ function passwordValidationHover(id, idorigin){
 
     }
 
-    if(repeat.value != text){
-
-        repeat.classList.add("red-error")
-        
-    } else {
-        repeat.classList.remove("red-error");
-    }
-
 }
 
 
@@ -274,7 +280,7 @@ function passwordValidationBlur(id, idorigin){
     let element = $("#" + id);
     let repeat = $("#" + idorigin)[0];
     let text = element.val();
-    if(isEmpty(id)|| text.length < 8|| !checkSpecialCharacters(text)){
+    if(isEmpty(id)|| text.length < 8|| !checkSpecialCharacters(text) || !containNumbers(id)){
         element.addClass("red-error");
     } else {
         element.removeClass("red-error");
@@ -301,6 +307,16 @@ function repeatPasswordValidationHover(id, idorigin){
     element.setAttribute("title", "")
     let errCount = 0;
 
+    if(isEmpty(id)){
+        if(element.title.length < 1){
+            element.setAttribute("title", element.title += "Campo está vazio");
+        } else {
+            element.setAttribute("title", element.title += "\nCampo está vazio!");
+        }
+        errCount++
+
+    }
+
     if(elementorigin.val() != element.value){
 
         if(element.title.length < 1){
@@ -324,7 +340,7 @@ function repeatPasswordValidationBlur(id, idorigin){
     let elementorigin = $("#" + idorigin);
     let textpassr = element.val();
     let textpass = elementorigin.val(); 
-    if(textpass != textpassr){
+    if(textpass != textpassr || isEmpty(id)){
         element.addClass("red-error");
     } else {
         element.removeClass("red-error");
@@ -385,6 +401,17 @@ function ageValidationHover(id){
 
     }
 
+    if(isEmpty(id)){
+
+        if(element.title.length < 1){
+            element.setAttribute("title", element.title += "Campo está vazio!");
+        } else {
+            element.setAttribute("title", element.title += "\nCampo está vazio!");
+        }
+        errCount++
+
+    }
+
 }
 
 function ageValidationBlur(id){
@@ -395,7 +422,55 @@ function ageValidationBlur(id){
 
     let element = $("#" + id);
     let age = getAge(element.val());
-    if(age < 18){
+    
+    if(age < 18 || isEmpty(id)){
+        element.addClass("red-error");
+    } else {
+        element.removeClass("red-error");
+    }
+
+}
+
+function cpfHover(id){
+
+    if(!isCreatingAccount()){
+        return
+    }
+    let element = $("#" + id)[0];
+    element.setAttribute("title", "")
+    let errCount = 0;
+
+    if(isEmpty(id)){
+        if(element.title.length < 1){
+            element.setAttribute("title", element.title += "Campo está vazio!");
+        } else {
+            element.setAttribute("title", element.title += "\nCampo está vazio!")
+        }
+        errCount++
+    }
+
+    if(element.value.length < 14){
+
+        if(element.title.length < 1){
+            element.setAttribute("title", element.title += "CPF incompleto!");
+        } else {
+            element.setAttribute("title", element.title += "\nCPF incompleto!")
+        }
+        errCount++
+
+    }
+
+}
+
+function cpfBlur(id){
+
+    if(!isCreatingAccount()){
+        return
+    }
+    
+
+    let element = $("#" + id);
+    if(isEmpty(id) || element.val().length < 14){
         element.addClass("red-error");
     } else {
         element.removeClass("red-error");
@@ -422,6 +497,16 @@ function cepValidationHover(id){
         errCount++
     }
 
+    if(element.value.length < 9){
+        if(element.title.length < 1){
+            element.setAttribute("title", element.title += "CEP Incompleto!");
+        } else {
+            element.setAttribute("title", element.title += "\nCEP Incompleto!")
+        }
+        errCount++
+    }
+
+
 }
 
 function cepValidationBlur(id){
@@ -431,7 +516,7 @@ function cepValidationBlur(id){
     }
 
     let element = $("#" + id);
-    if(isEmpty(id)){
+    if(isEmpty(id) || element.val().length < 9){
         element.addClass("red-error");
     } else {
         element.removeClass("red-error");
@@ -528,5 +613,52 @@ function cdcValidationBlur(id){
 
 }
 
+function otherGenHover(id){
+
+    if(!isCreatingAccount()){
+        return
+    }
+    let element = $("#" + id)[0];
+    element.setAttribute("title", "")
+    let errCount = 0;
+
+    if(isEmpty(id)){
+        if(element.title.length < 1){
+            element.setAttribute("title", element.title += "Campo está vazio!");
+        } else {
+            element.setAttribute("title", element.title += "\nCampo está vazio!")
+        }
+        errCount++
+    }
+
+}
+
+function otherGenderValidator(){
+    let element = $("#other-gen")
+    if(isEmpty("other-gen")){
+        element.addClass("red-error");
+    } else {
+        element.removeClass("red-error");
+    }
+}
+
+function checkIfAnyErrors(){
+
+    nameValidationBlur("input-username")
+    nameValidationBlur("input-fath")
+    nameValidationBlur("input-moth")
+    emailValidationBlur('input-email')
+    passwordValidationBlur('input-pass', 'input-pass-again')
+    repeatPasswordValidationBlur('input-pass-again', 'input-pass')
+    cpfBlur("input-cpf")
+    ageValidationBlur("input-age")
+    if($("#other-gen").is(":visible")){
+        otherGenderValidator()
+    }
+    cepValidationBlur("input-cep");
+    cdcValidationBlur("input-cdc");
+
+    return(document.getElementsByClassName("red-error").length);
+}
 
 

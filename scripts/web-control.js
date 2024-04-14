@@ -1,5 +1,11 @@
 let priceFilter = null;
+let userList
 
+if(JSON.parse(localStorage.getItem("userlist"))){
+  userList = JSON.parse(localStorage.getItem("userlist"))
+} else {
+  userList = []
+}
 
 function getNav(){
     let nav;
@@ -66,17 +72,27 @@ function getNav(){
 }
 
 
-document.getElementsByClassName("navbar")[0].innerHTML = getNav();
+function refreshNavbar(){
+  document.getElementsByClassName("navbar")[0].innerHTML = getNav();
+}
 
 function switchSections(filter){
     const innerhtml = filter.id
     if(!isLogged){
         switch(innerhtml){
             case "home": shower('prod-sect'); hider('register-prod');hider("cart-sect"); hider('loginpage'); break;
-            case "reg": shower('register-prod'); hider('prod-sect');hider("cart-sect"); hider('loginpage'); break;
             case "cart": hider('prod-sect'); hider('register-prod');hider("cart-sect"); shower('loginpage'); updateCart(); break;
             case "loginpage": shower('loginpage');  hider('prod-sect'); hider('register-prod'); hider("cart-sect"); break;
         }
+    } else {
+
+      switch(innerhtml){
+        case "home": shower('prod-sect'); hider('register-prod');hider("cart-sect"); hider('loginpage'); break;
+        case "reg": shower('register-prod'); hider('prod-sect');hider("cart-sect"); hider('loginpage'); break;
+        case "cart": hider('prod-sect'); hider('register-prod');shower("cart-sect"); hider('loginpage'); updateCart(); break;
+
+    }
+
     }
     
 }
@@ -210,3 +226,5 @@ function genderSelectManager(id){
 
   }
 }
+
+refreshNavbar();
