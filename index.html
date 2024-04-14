@@ -175,25 +175,25 @@
           <div class="form-styling">
 
             <form class="form-sizing">
-              <div class="mb-3 form-flex">
+              <div class="mb-3 form-flex hidden cad">
                 <div class="label-container">
                   <label for="input-username" class="roboto">Nome do Usuário: </label>
                 </div>                
-                <input onblur="nameValidationBlur('input-username')" onmouseover="nameValidationHover('input-username')" type="text" class="form-control" id="input-username">
+                <input onblur="nameValidationBlur('input-username')" onmouseover="nameValidationHover('input-username')" type="text" class="form-control cadin" id="input-username">
               </div>
-              <div class="cad mb-3 form-flex hidden">
+              <div class="cad mb-3 form-flex ">
                 <div class="label-container">
-                  <label for="input-pass-em" class="roboto">Email: </label>
+                  <label for="input-email" class="roboto">Email: </label>
                 </div>
                 
-                <input type="email" onblur="emailValidationBlur('input-pass-em')" onmouseover="validateEmailHover('input-pass-em')" class="form-control" id="input-pass-em">
+                <input type="email" onblur="emailValidationBlur('input-email')" onmouseover="validateEmailHover('input-email')" class="form-control cadin" id="input-email">
               </div>
               <div class="mb-3 form-flex">
                 <div class="label-container">
                   <label for="input-pass" class="roboto">Senha: </label>
                 </div>
                 
-                <input type="password" onblur="passwordValidationBlur('input-pass', 'input-pass-again')" onmouseover="passwordValidationHover('input-pass', 'input-pass-again')" class="form-control" id="input-pass">
+                <input type="password" onblur="passwordValidationBlur('input-pass', 'input-pass-again')" onmouseover="passwordValidationHover('input-pass', 'input-pass-again')" class="form-control cadin" id="input-pass">
               </div>
 
               <div class="cad mb-3 form-flex hidden">
@@ -201,14 +201,14 @@
                   <label for="input-pass-again" class="roboto">Repita sua senha: </label>
                 </div>
                 
-                <input type="password" class="form-control" onblur="repeatPasswordValidationBlur('input-pass-again', 'input-pass')" onmouseover="repeatPasswordValidationHover('input-pass-again', 'input-pass')" id="input-pass-again">
+                <input type="password" class="form-control cadin" onblur="repeatPasswordValidationBlur('input-pass-again', 'input-pass')" onmouseover="repeatPasswordValidationHover('input-pass-again', 'input-pass')" id="input-pass-again">
               </div>
               <div class="cad mb-3 form-flex hidden">
                 <div class="label-container">
                   <label for="input-cpf" class="roboto">CPF: </label>
                 </div>
                 
-                <input type="text" maxlength="14" onblur="repeatPasswordValidationBlur('input-cpf')" onmouseover="repeatPasswordValidationHover('input-cpf')"  onkeyup="cpfAdjusting()" class="form-control" id="input-cpf">
+                <input type="text" maxlength="14" onblur="cpfBlur('input-cpf')" onmouseover="cpfHover('input-cpf')"  onkeyup="cpfAdjusting()" class="form-control cadin" id="input-cpf">
               </div>
 
               <div class="cad mb-3 form-flex hidden">
@@ -216,7 +216,7 @@
                   <label for="input-fath" class="roboto">Nome do Pai: </label>
                 </div>
                 
-                <input type="text" onblur="nameValidationBlur('input-fath')" onmouseover="nameValidationHover('input-fath')" class="form-control" id="input-fath">
+                <input type="text" onblur="nameValidationBlur('input-fath')" onmouseover="nameValidationHover('input-fath')" class="form-control cadin" id="input-fath">
               </div>
 
               <div class="cad mb-3 form-flex hidden">
@@ -224,7 +224,7 @@
                   <label for="input-moth" class="roboto">Nome da Mãe: </label>
                 </div>
                 
-                <input type="text" onblur="nameValidationBlur('input-moth')" onmouseover="nameValidationHover('input-moth')" class="form-control" id="input-moth">
+                <input type="text" onblur="nameValidationBlur('input-moth')" onmouseover="nameValidationHover('input-moth')" class="form-control cadin" id="input-moth">
               </div>
 
               <div class="cad mb-3 form-flex hidden">
@@ -232,7 +232,7 @@
                   <label for="input-age" class="roboto">Data de Nascimento: </label>
                 </div>
                 
-                <input type="date" onblur="ageValidationBlur('input-age')" onmouseover="ageValidationHover('input-age')" class="form-control" id="input-age">
+                <input type="date" onblur="ageValidationBlur('input-age')" onmouseover="ageValidationHover('input-age')" class="form-control cadin" id="input-age">
               </div>
 
               <div class="cad mb-3 form-flex hidden">
@@ -241,7 +241,7 @@
                 </div>
 
                 <div class="other-gen-form">
-                  <select class="form-select" onchange="genderSelectManager('input-gen')" aria-label="Default select example" id="input-gen">
+                  <select class="form-select cadin" onchange="genderSelectManager('input-gen')" aria-label="Default select example" id="input-gen">
                     <option hidden selected>Gênero</option>
                     <option value="m">Masculino</option>
                     <option value="f">Feminino</option>
@@ -249,7 +249,7 @@
                   </select>
   
                   <div class="hidden" id="gen-other-div">
-                    <input type="text" id="other-gen" class="form-control max-width">
+                    <input type="text" id="other-gen" onmouseover="otherGenHover('other-gen')" onblur="otherGenderValidator()" class="form-control max-width cadin">
                   </div>
                   
                   
@@ -263,7 +263,7 @@
                   <label for="input-cep" class="roboto">CEP: </label>
                 </div>
                 
-                <input type="text" onkeyup="cepAdjuster('input-cep')" maxlength="9" onblur="cepValidationBlur('input-cep')" onmouseover="cepValidationHover('input-cep')" class="form-control" id="input-cep">
+                <input type="text" onkeyup="cepAdjuster('input-cep')" maxlength="9" onblur="cepValidationBlur('input-cep')" onmouseover="cepValidationHover('input-cep')" class="form-control cadin" id="input-cep">
               </div>
 
               <div class="cad mb-3 form-flex hidden">
@@ -271,7 +271,7 @@
                   <label for="input-cdc" class="roboto">Cartão de Crédito: </label>
                 </div>
                 
-                <input type="text" onkeyup="cdcAdjuster('input-cdc')" maxlength="19" onblur="cdcValidationBlur('input-cdc')" onmouseover="cdcValidationHover('input-cdc')" class="form-control" id="input-cdc">
+                <input type="text" onkeyup="cdcAdjuster('input-cdc')" maxlength="19" onblur="cdcValidationBlur('input-cdc')" onmouseover="cdcValidationHover('input-cdc')" class="form-control cadin" id="input-cdc">
               </div>
 
               <div class="button-account-container flex-center">

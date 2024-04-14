@@ -1,15 +1,68 @@
 let isLogged = localStorage.getItem("isLogged");
 
 function loginUser(){
-    let user = checkIfUserExists();
+    let user = getUser();
 
-    if(user == null){
-        window.alert("Usuário não existe!");
-        return;
+    if(user){
+        isLogged = true;
+        refreshNavbar();
+        goHome();
+    } else {
+        window.alert("Email e/ou senha incorretos!")
     }
 }
 
-function checkIfUserExists(){
-    let user = localStorage.getItem("user_rs");
-    return user;
+function getUser(){
+
+    let email = $("#input-email").val();
+    let pass = $("#input-pass").val();
+
+    for(let i in userList){
+        if(userList[i].email == email && userList[i].pass == pass){
+            return true
+        }
+    }
+
+    return false;
+}
+
+function verifyIfEmailExists(arr, email){
+    for(let i in arr){
+        if(arr[i].email == email){
+            return true;
+        }
+    }
+}
+
+function registerUser(){
+
+    let newUser = {
+
+    }
+
+    newUser.name = $("#input-username").val();
+    newUser.email = $("#input-email").val();
+    newUser.pass = $("#input-pass").val();
+    newUser.cpf = $("#input-cpf").val();
+    newUser.fath = $("#input-fath").val();
+    newUser.moth = $("#input-moth").val();
+    newUser.birthday = $("#input-age").val();
+
+    if($("#other-gen").is(":visible")){
+        newUser.gen = $("#other-gen").val();
+    } else {
+        newUser.gen = $("#input-gen").val();
+    }
+
+    newUser.cep = $("#input-cep").val();
+    newUser.cdc = $("#input-cdc").val();
+    
+    if(checkIfAnyErrors() > 0){
+        return
+    } else {
+        userList.push(newUser)
+        localStorage.setItem("userlist",JSON.stringify(userList))
+        goHome();
+    }
+    
 }
