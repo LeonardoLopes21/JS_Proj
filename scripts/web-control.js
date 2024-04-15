@@ -208,8 +208,19 @@ function switchToMakeAccount() {
   let loginButtonContainers = $(".button-account-container");
   greenbutton.show();
   greenbutton.css("display", "flex");
-  greenbutton.css("jsutify-content", "center");
+  greenbutton.css("justify-content", "center");
   loginButtonContainers.addClass("hidden")
+}
+
+function switchToLogin() {
+  let cad_fields = $(".cad");
+  let header = $("#create-login-header");
+  let greenbutton = $("#button-cad-cont");
+  header.html("Login")
+  cad_fields.addClass("hidden");
+  let loginButtonContainers = $(".button-account-container");
+  greenbutton.hide();
+  loginButtonContainers.removeClass("hidden");
 }
 
 
