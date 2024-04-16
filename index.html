@@ -120,13 +120,13 @@
                   <label for="input-nome" class="roboto">Nome do Produto</label>
                 </div>
                 
-                <input type="text" class="form-control" id="input-nome">
+                <input onblur="productNameValidationBlur('input-nome')" onmouseover="productNameValidationHover('input-nome')" type="text" class="form-control cadin" id="input-nome">
               </div>
               <div class="mb-3 form-flex">
                 <div class="label-container">
                   <label for="input-prec" class="roboto">Preço</label>
                 </div>
-                <input type="number" step=".01" class="form-control" id="input-prec">
+                <input type="number" onblur="productPriceValidationBlur('input-prec')" onmouseover="productPriceValidationHover('input-prec')" step=".01" class="form-control" id="input-prec">
               </div>
               <div class="mb-3 form-flex">
                 <div class="label-container">
@@ -221,10 +221,26 @@
 
               <div class="cad mb-3 form-flex hidden">
                 <div class="label-container">
+                  <label for="input-cpf" class="roboto">CPF do Pai: </label>
+                </div>
+                
+                <input type="text" maxlength="14" onblur="cpfBlur('input-fath-cpf')" onmouseover="cpfHover('input-fath-cpf')"  onkeyup="cpfAdjusting()" class="form-control cadin" id="input-fath-cpf">
+              </div>
+
+              <div class="cad mb-3 form-flex hidden">
+                <div class="label-container">
                   <label for="input-moth" class="roboto">Nome da Mãe: </label>
                 </div>
                 
                 <input type="text" onblur="nameValidationBlur('input-moth')" onmouseover="nameValidationHover('input-moth')" class="form-control cadin" id="input-moth">
+              </div>
+
+              <div class="cad mb-3 form-flex hidden">
+                <div class="label-container">
+                  <label for="input-cpf" class="roboto">CPF da Mãe: </label>
+                </div>
+                
+                <input type="text" maxlength="14" onblur="cpfBlur('input-moth-cpf')" onmouseover="cpfHover('input-moth-cpf')"  onkeyup="cpfAdjusting()" class="form-control cadin" id="input-moth-cpf">
               </div>
 
               <div class="cad mb-3 form-flex hidden">
@@ -264,6 +280,22 @@
                 </div>
                 
                 <input type="text" onkeyup="cepAdjuster('input-cep')" maxlength="9" onblur="cepValidationBlur('input-cep')" onmouseover="cepValidationHover('input-cep')" class="form-control cadin" id="input-cep">
+              </div>
+
+              <div class="cad mb-3 form-flex hidden">
+                <div class="label-container">
+                  <label for="input-street" class="roboto">Rua: </label>
+                </div>
+                
+                <input type="text" onblur="streetValidationBlur('input-street')" onmouseover="streetValidationHover('input-street')" class="form-control cadin" id="input-street">
+              </div>
+
+              <div class="cad mb-3 form-flex hidden">
+                <div class="label-container">
+                  <label for="input-num" class="roboto">Número: </label>
+                </div>
+                
+                <input type="text" maxlength="3" onkeyup="numAdjuster('input-num')" onblur="numValidationBlur('input-num')" onmouseover="numValidationHover('input-num')" class="form-control cadin" id="input-num">
               </div>
 
               <div class="cad mb-3 form-flex hidden">

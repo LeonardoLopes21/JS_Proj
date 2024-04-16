@@ -25,6 +25,8 @@ function getLastId(){
 }
 
 function insert(){
+    productNameValidationBlur('input-nome');
+    productPriceValidationBlur('input-prec');
     const input_name = document.getElementById("input-nome");
     const input_preco = document.getElementById("input-prec");
     const input_cat = document.getElementById("input-categoria");
@@ -37,7 +39,13 @@ function insert(){
         "cat": input_cat.value,
         "url": url.value
     }
-    prods.push(newProd)
-    localStorage.setItem("prodlist",JSON.stringify(prods));
-    addToHtml("prods-grid", printCards(prods))
+
+    if(checkIfAnyErrorsProd() < 1){
+        prods.push(newProd)
+        localStorage.setItem("prodlist",JSON.stringify(prods));
+        addToHtml("prods-grid", printCards(prods))
+
+    }
+    
+    
 }

@@ -44,6 +44,8 @@ function registerUser(){
     newUser.email = $("#input-email").val();
     newUser.pass = $("#input-pass").val();
     newUser.cpf = $("#input-cpf").val();
+    newUser.fathcpf = $("input-fath-cpf").val();
+    newUser.mothcpf = $("input-moth-cpf").val();
     newUser.fath = $("#input-fath").val();
     newUser.moth = $("#input-moth").val();
     newUser.birthday = $("#input-age").val();
@@ -53,8 +55,9 @@ function registerUser(){
     } else {
         newUser.gen = $("#input-gen").val();
     }
-
     newUser.cep = $("#input-cep").val();
+    newUser.street = $("#input-street").val();
+    newUser.num = $("#input-num").val();
     newUser.cdc = $("#input-cdc").val();
     
     if(checkIfAnyErrors() > 0){

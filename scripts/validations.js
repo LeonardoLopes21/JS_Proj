@@ -642,6 +642,186 @@ function otherGenderValidator(){
     }
 }
 
+function streetValidationHover(id){
+
+    if(!isCreatingAccount()){
+        return
+    }
+    let element = $("#" + id)[0];
+    element.setAttribute("title", "")
+    let errCount = 0;
+
+    if(isEmpty(id)){
+        if(element.title.length < 1){
+            element.setAttribute("title", element.title += "Campo está vazio!");
+        } else {
+            element.setAttribute("title", element.title += "\nCampo está vazio!")
+        }
+        errCount++
+    }
+
+    if(containNumbers(id)){
+
+        if(element.title.length < 1){
+            element.setAttribute("title", element.title += "Campo não pode ter números!");
+        } else {
+            element.setAttribute("title", element.title += "\nCampo não pode ter números!");
+        }
+        errCount++
+
+    }
+
+}
+
+function streetValidationBlur(id){
+
+    if(!isCreatingAccount()){
+        return
+    }
+
+    let element = $("#" + id);
+    if(isEmpty(id) || containNumbers(id)){
+        element.addClass("red-error");
+    } else {
+        element.removeClass("red-error");
+    }
+
+}
+
+function numAdjuster(id){
+
+    let num = $("#" + id);
+
+    let numval = num.val();
+
+    let unwantedchars = "aqwertyuiopáéíóúãõsadfghjklzxcvbnm,.;/]~ç[´p'?:><}^ç{`!@#$%¨&*()\\";
+
+    let unwantedcharsUpperCase = unwantedchars.toUpperCase();
+
+    numval = eliminateUnwantedChars(unwantedchars, numval);
+
+    numval = eliminateUnwantedChars(unwantedcharsUpperCase, numval);
+
+    num.val(numval);
+
+}
+
+function numValidationHover(id){
+
+    if(!isCreatingAccount()){
+        return
+    }
+    let element = $("#" + id)[0];
+    element.setAttribute("title", "")
+    let errCount = 0;
+
+    if(isEmpty(id)){
+        if(element.title.length < 1){
+            element.setAttribute("title", element.title += "Campo está vazio!");
+        } else {
+            element.setAttribute("title", element.title += "\nCampo está vazio!")
+        }
+        errCount++
+    }
+
+}
+
+function numValidationBlur(id){
+
+    if(!isCreatingAccount()){
+        return
+    }
+
+    let element = $("#" + id);
+    if(isEmpty(id)){
+        element.addClass("red-error");
+    } else {
+        element.removeClass("red-error");
+    }
+
+}
+
+function streetValidationBlur(id){
+
+    if(!isCreatingAccount()){
+        return
+    }
+
+    let element = $("#" + id);
+    if(isEmpty(id)){
+        element.addClass("red-error");
+    } else {
+        element.removeClass("red-error");
+    }
+
+}
+
+function productNameValidationBlur(id){
+    let element = $("#" + id);
+    if(isEmpty(id)||containNumbers(id)){
+        element.addClass("red-error");
+    } else {
+        element.removeClass("red-error");
+    }
+
+}
+
+function productNameValidationHover(id){
+    let element = $("#" + id)[0];
+    element.setAttribute("title", "");
+    if(isEmpty(id)){
+        if(element.title.length < 1){
+            element.setAttribute("title", element.title += "Campo está vazio!");
+        } else {
+            element.setAttribute("title", element.title += "\nCampo está vazio!")
+        }
+    }
+
+    if(containNumbers(id)){
+        if(element.title.length < 1){
+            element.setAttribute("title", element.title += "Campo contém números!");
+        } else {
+            element.setAttribute("title", element.title += "\nCampo contém números!")
+        }
+    }
+
+}
+
+function productPriceValidationHover(id){
+    let element = $("#" + id)[0];
+    element.setAttribute("title", "");
+    if(isEmpty(id)){
+        if(element.title.length < 1){
+            element.setAttribute("title", element.title += "Campo está vazio!");
+        } else {
+            element.setAttribute("title", element.title += "\nCampo está vazio!")
+        }
+    }
+
+    if(Number(element.value) > 1000){
+        if(element.title.length < 1){
+            element.setAttribute("title", element.title += "Não oferecemos produtos com preço acima de 1000 R$!");
+        } else {
+            element.setAttribute("title", element.title += "\nNão oferecemos produtos com preço acima de 1000 R$!")
+        }
+    }
+
+
+}
+
+function productPriceValidationBlur(id){
+
+    let element = $("#" + id);
+    if(isEmpty(id)||Number(element.val()) > 1000){
+        element.addClass("red-error");
+    } else {
+        element.removeClass("red-error");
+    }
+
+}
+
+
+
 function checkIfAnyErrors(){
 
     nameValidationBlur("input-username")
@@ -651,13 +831,23 @@ function checkIfAnyErrors(){
     passwordValidationBlur('input-pass', 'input-pass-again')
     repeatPasswordValidationBlur('input-pass-again', 'input-pass')
     cpfBlur("input-cpf")
+    cpfBlur('input-fath-cpf')
+    cpfBlur('input-moth-cpf')
     ageValidationBlur("input-age")
     if($("#other-gen").is(":visible")){
         otherGenderValidator()
     }
     cepValidationBlur("input-cep");
+    streetValidationBlur('input-street')
+    numValidationBlur('input-num')
     cdcValidationBlur("input-cdc");
 
+    return(document.getElementsByClassName("red-error").length);
+}
+
+function checkIfAnyErrorsProd(){
+    productNameValidationBlur('input-nome');
+    productPriceValidationBlur('input-prec');
     return(document.getElementsByClassName("red-error").length);
 }
 
