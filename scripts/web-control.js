@@ -99,9 +99,7 @@ function switchSections(filter){
 
 function goHome(){
 
-    shower('prod-sect'); 
-    hider('register-prod');
-    hider("cart-sect");
+    switchSections(document.getElementById("home"));
 
 }
 
@@ -206,6 +204,8 @@ function switchToMakeAccount() {
   header.html("Criar Conta")
   cad_fields.removeClass("hidden");
   let loginButtonContainers = $(".button-account-container");
+  let returnButton = $("#button-return");
+  returnButton.show()
   greenbutton.show();
   greenbutton.css("display", "flex");
   greenbutton.css("justify-content", "center");
@@ -221,6 +221,8 @@ function switchToLogin() {
   let loginButtonContainers = $(".button-account-container");
   greenbutton.hide();
   loginButtonContainers.removeClass("hidden");
+  let returnButton = $("#button-return");
+  returnButton.hide();
 }
 
 
