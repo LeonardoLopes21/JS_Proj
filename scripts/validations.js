@@ -348,9 +348,9 @@ function repeatPasswordValidationBlur(id, idorigin){
 
 }
 
-function cpfAdjusting(){
+function cpfAdjusting(id){
 
-    let input = $("#input-cpf")
+    let input = $("#" + id)
     let inputVal = input.val();
 
     let invalidChars = "abcdefghijlmnopqrstuvwxyzáéíóúãõ;!@#$%¨&*()_+="

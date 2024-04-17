@@ -208,7 +208,7 @@
                   <label for="input-cpf" class="roboto">CPF: </label>
                 </div>
                 
-                <input type="text" maxlength="14" onblur="cpfBlur('input-cpf')" onmouseover="cpfHover('input-cpf')"  onkeyup="cpfAdjusting()" class="form-control cadin" id="input-cpf">
+                <input type="text" maxlength="14" onblur="cpfBlur('input-cpf')" onmouseover="cpfHover('input-cpf')"  onkeyup="cpfAdjusting('input-cpf')" class="form-control cadin" id="input-cpf">
               </div>
 
               <div class="cad mb-3 form-flex hidden">
@@ -224,7 +224,7 @@
                   <label for="input-cpf" class="roboto">CPF do Pai: </label>
                 </div>
                 
-                <input type="text" maxlength="14" onblur="cpfBlur('input-fath-cpf')" onmouseover="cpfHover('input-fath-cpf')"  onkeyup="cpfAdjusting()" class="form-control cadin" id="input-fath-cpf">
+                <input type="text" maxlength="14" onblur="cpfBlur('input-fath-cpf')" onmouseover="cpfHover('input-fath-cpf')"  onkeyup="cpfAdjusting('input-fath-cpf')" class="form-control cadin" id="input-fath-cpf">
               </div>
 
               <div class="cad mb-3 form-flex hidden">
@@ -240,7 +240,7 @@
                   <label for="input-cpf" class="roboto">CPF da Mãe: </label>
                 </div>
                 
-                <input type="text" maxlength="14" onblur="cpfBlur('input-moth-cpf')" onmouseover="cpfHover('input-moth-cpf')"  onkeyup="cpfAdjusting()" class="form-control cadin" id="input-moth-cpf">
+                <input type="text" maxlength="14" onblur="cpfBlur('input-moth-cpf')" onmouseover="cpfHover('input-moth-cpf')"  onkeyup="cpfAdjusting('input-moth-cpf')" class="form-control cadin" id="input-moth-cpf">
               </div>
 
               <div class="cad mb-3 form-flex hidden">
@@ -258,7 +258,6 @@
 
                 <div class="other-gen-form">
                   <select class="form-select cadin" onchange="genderSelectManager('input-gen')" aria-label="Default select example" id="input-gen">
-                    <option hidden selected>Gênero</option>
                     <option value="m">Masculino</option>
                     <option value="f">Feminino</option>
                     <option value="o">Outro</option>
@@ -312,6 +311,10 @@
 
               <div class="hider button-account-container flex-center" id="button-cad-cont">
                 <button type="button" onclick="registerUser()"  class="btn btn-outline-success">Cadastrar</button>
+              </div>
+
+              <div class="hider button-account-container flex-center" id="button-return">
+                <button type="button" onclick="switchToLogin()"  class="btn btn-dark">Retornar</button>
               </div>
 
               <div class="button-account-container">

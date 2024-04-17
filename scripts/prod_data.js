@@ -21,7 +21,13 @@ function getProd(id){
 
 function getLastId(){
     
-    return Number(user_carr.length) + 1
+    let counter = 0;
+
+    for(let i in prods){
+        counter++;
+    }
+
+    return counter;
 }
 
 function insert(){
@@ -39,6 +45,8 @@ function insert(){
         "cat": input_cat.value,
         "url": url.value
     }
+
+    console.log(newid);
 
     if(checkIfAnyErrorsProd() < 1){
         prods.push(newProd)
