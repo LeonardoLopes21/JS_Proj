@@ -8,7 +8,7 @@ function isCreatingAccount(){
 
     let header = $("#create-login-header").html();
 
-    return header != "Login"
+    return header != "Login";
 
 }
 
@@ -27,7 +27,7 @@ function containNumbers(id){
 function nameValidationBlur(id){
 
     if(!isCreatingAccount()){
-        return
+        return;
     }
 
     let element = $("#" + id);
@@ -79,7 +79,7 @@ function hasNecessaryCharactersEmail(text){
 function validateEmailHover(id){
 
     if(!isCreatingAccount()){
-        return
+        return;
     }
     
     let element = $("#" + id)[0];
@@ -91,7 +91,7 @@ function validateEmailHover(id){
         if(element.title.length < 1){
             element.setAttribute("title", element.title += "Campo está vazio!");
         } else {
-            element.setAttribute("title", element.title += "\nCampo está vazio!")
+            element.setAttribute("title", element.title += "\nCampo está vazio!");
         }
         errCount++
     }
@@ -101,9 +101,9 @@ function validateEmailHover(id){
         if(element.title.length < 1){
             element.setAttribute("title", element.title += "Email deve incluir @ e .com");
         } else {
-            element.setAttribute("title", element.title += "\nEmail deve incluir @ e .com!")
+            element.setAttribute("title", element.title += "\nEmail deve incluir @ e .com!");
         }
-        errCount++
+        errCount++;
 
     }
 
@@ -111,7 +111,7 @@ function validateEmailHover(id){
         if(element.title.length < 1){
             element.setAttribute("title", element.title += "Email deve possuir um provedor válido");
         } else {
-            element.setAttribute("title", element.title += "\nEmail deve possuir um provedor válido!")
+            element.setAttribute("title", element.title += "\nEmail deve possuir um provedor válido!");
         }
         errCount++
     }
@@ -120,7 +120,7 @@ function validateEmailHover(id){
         if(element.title.length < 1){
             element.setAttribute("title", element.title += "Email já está em uso");
         } else {
-            element.setAttribute("title", element.title += "\nEmail já está em uso!")
+            element.setAttribute("title", element.title += "\nEmail já está em uso!");
         }
         errCount++
 
@@ -138,7 +138,7 @@ function validateEmailHover(id){
 function emailValidationBlur(id){
 
     if(!isCreatingAccount()){
-        return
+        return;
     }
     let element = $("#" + id);
     let text = element.val();
@@ -153,14 +153,14 @@ function emailValidationBlur(id){
 
 function hasTwoFullValues(id){
     if(!isCreatingAccount()){
-        return
+        return;
     }
     let element = $("#" + id);
-    let array = element.val().split(" ")
-    let filteredArray = []
+    let array = element.val().split(" ");
+    let filteredArray = [];
     for(let i in array){
         if(array[i] != "" && array[i].length > 1){
-            filteredArray.push(array[i])
+            filteredArray.push(array[i]);
         }
     }
 
@@ -170,35 +170,35 @@ function hasTwoFullValues(id){
 
 function nameValidationHover(id){
     if(!isCreatingAccount()){
-        return
+        return;
     }
     let element = $("#" + id)[0];
-    element.setAttribute("title", "")
+    element.setAttribute("title", "");
     let errCount = 0;
     //Checagem se o campo está vazio 
     if(isEmpty(id)){
         if(element.title.length < 1){
             element.setAttribute("title", element.title += "Campo está vazio!");
         } else {
-            element.setAttribute("title", element.title += "\nCampo está vazio!")
+            element.setAttribute("title", element.title += "\nCampo está vazio!");
         }
-        errCount++
+        errCount++;
     }
 
     if(containNumbers(id)){
         if(element.title.length < 1){
             element.setAttribute("title", element.title += "Campo contém números!");
         } else {
-            element.setAttribute("title", element.title += "\nCampo contém números!")
+            element.setAttribute("title", element.title += "\nCampo contém números!");
         }
-        errCount++
+        errCount++;
     }
 
     if(!hasTwoFullValues(id)){
         if(element.title.length < 1){
             element.setAttribute("title", element.title += "Nome não está completo!");
         } else {
-            element.setAttribute("title", element.title += "\nNome não está completo!")
+            element.setAttribute("title", element.title += "\nNome não está completo!");
         }
         errCount++
     }
@@ -220,7 +220,7 @@ function eliminateUnwantedChars(unwantedchars, text){
 }
 
 function checkSpecialCharacters(text){
-    return hasAtLeastOne("!@#$%¨&*()_+;.,\\/", text)
+    return hasAtLeastOne("!@#$%¨&*()_+;.,\\/", text);
 }
 
 
@@ -231,7 +231,7 @@ function passwordValidationHover(id, idorigin){
     let element = $("#" + id)[0];
     let repeat = $("#" + idorigin)[0];
     text = element.value;
-    element.setAttribute("title", "")
+    element.setAttribute("title", "");
     let errCount = 0;
 
     if(!containNumbers(id)){
@@ -288,7 +288,7 @@ function passwordValidationBlur(id, idorigin){
 
     if(repeat.value != text){
 
-        repeat.classList.add("red-error")
+        repeat.classList.add("red-error");
         
     } else {
         repeat.classList.remove("red-error");
@@ -304,7 +304,7 @@ function repeatPasswordValidationHover(id, idorigin){
 
     let element = $("#" + id)[0];
     let elementorigin = $("#" + idorigin);
-    element.setAttribute("title", "")
+    element.setAttribute("title", "");
     let errCount = 0;
 
     if(isEmpty(id)){
@@ -333,7 +333,7 @@ function repeatPasswordValidationHover(id, idorigin){
 function repeatPasswordValidationBlur(id, idorigin){
 
     if(!isCreatingAccount()){
-        return
+        return;
     }
 
     let element = $("#" + id);
@@ -357,7 +357,7 @@ function adjustCPF(string){
     newString = newString.replace(".", "");
     newString = newString.replace("-", "");
 
-    let stringArr = newString.match(/.{1,3}/g)
+    let stringArr = newString.match(/.{1,3}/g);
     let cpfend = stringArr.pop();
 
     let finalString = (stringArr.join('.') + "-" + cpfend);
@@ -367,7 +367,7 @@ function adjustCPF(string){
 
 function cpfAdjusting(id){
 
-    let input = $("#" + id)
+    let input = $("#" + id);
     let inputVal = input.val();
 
     let invalidChars = "abcdefghijlmnopqrstuvwxyzáéíóúãõ;!@#$%¨&*()_+="
@@ -380,7 +380,7 @@ function cpfAdjusting(id){
 
     input.val();
     if(inputVal.length == 3 || inputVal.length == 7){
-        input.val(inputVal + ".")
+        input.val(inputVal + ".");
     } else if(inputVal.length == 11){
         input.val(inputVal + "-");
     }
@@ -404,9 +404,9 @@ function ageValidationHover(id){
         return
     }
     let element = $("#" + id)[0];
-    element.setAttribute("title", "")
+    element.setAttribute("title", "");
     let errCount = 0;
-    let age = getAge(element.value)
+    let age = getAge(element.value);
     if(age < 18){
 
         if(element.title.length < 1){
@@ -425,7 +425,7 @@ function ageValidationHover(id){
         } else {
             element.setAttribute("title", element.title += "\nCampo está vazio!");
         }
-        errCount++
+        errCount++;
 
     }
 
@@ -434,7 +434,7 @@ function ageValidationHover(id){
 function ageValidationBlur(id){
 
     if(!isCreatingAccount()){
-        return
+        return;
     }
 
     let element = $("#" + id);
@@ -463,7 +463,7 @@ function cpfHover(id){
         } else {
             element.setAttribute("title", element.title += "\nCampo está vazio!")
         }
-        errCount++
+        errCount++;
     }
 
     if(element.value.length < 14){
@@ -471,9 +471,9 @@ function cpfHover(id){
         if(element.title.length < 1){
             element.setAttribute("title", element.title += "CPF incompleto!");
         } else {
-            element.setAttribute("title", element.title += "\nCPF incompleto!")
+            element.setAttribute("title", element.title += "\nCPF incompleto!");
         }
-        errCount++
+        errCount++;
 
     }
 
@@ -482,7 +482,7 @@ function cpfHover(id){
 function cpfBlur(id){
 
     if(!isCreatingAccount()){
-        return
+        return;
     }
     
 
@@ -490,7 +490,7 @@ function cpfBlur(id){
     let text = element.val();
     if(text.length > 0){
         text = adjustCPF(text);
-        element.val(text)
+        element.val(text);
     }
     if(isEmpty(id) || element.val().length < 14){
         element.addClass("red-error");
@@ -507,25 +507,25 @@ function cepValidationHover(id){
         return
     }
     let element = $("#" + id)[0];
-    element.setAttribute("title", "")
+    element.setAttribute("title", "");
     let errCount = 0;
 
     if(isEmpty(id)){
         if(element.title.length < 1){
             element.setAttribute("title", element.title += "Campo está vazio!");
         } else {
-            element.setAttribute("title", element.title += "\nCampo está vazio!")
+            element.setAttribute("title", element.title += "\nCampo está vazio!");
         }
-        errCount++
+        errCount++;
     }
 
     if(element.value.length < 9){
         if(element.title.length < 1){
             element.setAttribute("title", element.title += "CEP Incompleto!");
         } else {
-            element.setAttribute("title", element.title += "\nCEP Incompleto!")
+            element.setAttribute("title", element.title += "\nCEP Incompleto!");
         }
-        errCount++
+        errCount++;
     }
 
 
@@ -534,7 +534,7 @@ function cepValidationHover(id){
 function cepValidationBlur(id){
 
     if(!isCreatingAccount()){
-        return
+        return;
     }
 
     let element = $("#" + id);
@@ -553,7 +553,7 @@ function cepAdjuster(id){
     let cepval = $("#" + id).val();
 
     if(cepval.length == 5){
-        cep.val(cepval += "-")
+        cep.val(cepval += "-");
     }
 
 }
@@ -570,10 +570,10 @@ function cdcAdjuster(id){
 
     cdcval = eliminateUnwantedChars(unwantedchars, cdcval);
 
-    cdcval = eliminateUnwantedChars(unwantedcharsUpperCase, cdcval)
+    cdcval = eliminateUnwantedChars(unwantedcharsUpperCase, cdcval);
 
     if(cdcval.length == 4 || cdcval.length == 9 || cdcval.length == 14 ){
-        cdc.val(cdcval += " ")
+        cdc.val(cdcval += " ");
     }
 
     cdc.val(cdcval);
@@ -590,9 +590,9 @@ function cdcValidationHover(id){
         if(element.title.length < 1){
             element.setAttribute("title", element.title += "Campo está vazio!");
         } else {
-            element.setAttribute("title", element.title += "\nCampo está vazio!")
+            element.setAttribute("title", element.title += "\nCampo está vazio!");
         }
-        errCount++
+        errCount++;
         return;
     }
 
@@ -603,7 +603,7 @@ function cdcValidationHover(id){
         } else {
             element.setAttribute("title", element.title += "\nDeve começar com 3, 4, 5, 6!")
         }
-        errCount++
+        errCount++;
 
 
     }
@@ -615,7 +615,7 @@ function cdcValidationHover(id){
         } else {
             element.setAttribute("title", element.title += "\nCartão Incompleto!")
         }
-        errCount++
+        errCount++;
 
 
     }
@@ -626,7 +626,7 @@ function cdcValidationHover(id){
 function cdcValidationBlur(id){
 
     let element = $("#" + id);
-    let elementval = element.val()
+    let elementval = element.val();
     if(isEmpty(id) || !hasAtLeastOne(["3", "4", "5", "6"],elementval[0]) || elementval.length < 19){
         element.addClass("red-error");
     } else {
@@ -639,25 +639,25 @@ function cdcValidationBlur(id){
 function otherGenHover(id){
 
     if(!isCreatingAccount()){
-        return
+        return;
     }
     let element = $("#" + id)[0];
-    element.setAttribute("title", "")
+    element.setAttribute("title", "");
     let errCount = 0;
 
     if(isEmpty(id)){
         if(element.title.length < 1){
             element.setAttribute("title", element.title += "Campo está vazio!");
         } else {
-            element.setAttribute("title", element.title += "\nCampo está vazio!")
+            element.setAttribute("title", element.title += "\nCampo está vazio!");
         }
-        errCount++
+        errCount++;
     }
 
 }
 
 function otherGenderValidator(){
-    let element = $("#other-gen")
+    let element = $("#other-gen");
     if(isEmpty("other-gen")){
         element.addClass("red-error");
     } else {
@@ -668,19 +668,19 @@ function otherGenderValidator(){
 function streetValidationHover(id){
 
     if(!isCreatingAccount()){
-        return ""
+        return "";
     }
     let element = $("#" + id)[0];
-    element.setAttribute("title", "")
+    element.setAttribute("title", "");
     let errCount = 0;
 
     if(isEmpty(id)){
         if(element.title.length < 1){
             element.setAttribute("title", element.title += "Campo está vazio!");
         } else {
-            element.setAttribute("title", element.title += "\nCampo está vazio!")
+            element.setAttribute("title", element.title += "\nCampo está vazio!");
         }
-        errCount++
+        errCount++;
     }
 
     if(containNumbers(id)){
@@ -690,7 +690,7 @@ function streetValidationHover(id){
         } else {
             element.setAttribute("title", element.title += "\nCampo não pode ter números!");
         }
-        errCount++
+        errCount++;
 
     }
 
@@ -699,7 +699,7 @@ function streetValidationHover(id){
 function streetValidationBlur(id){
 
     if(!isCreatingAccount()){
-        return
+        return;
     }
 
     let element = $("#" + id);
@@ -732,17 +732,17 @@ function numAdjuster(id){
 function numValidationHover(id){
 
     if(!isCreatingAccount()){
-        return
+        return;
     }
     let element = $("#" + id)[0];
-    element.setAttribute("title", "")
+    element.setAttribute("title", "");
     let errCount = 0;
 
     if(isEmpty(id)){
         if(element.title.length < 1){
             element.setAttribute("title", element.title += "Campo está vazio!");
         } else {
-            element.setAttribute("title", element.title += "\nCampo está vazio!")
+            element.setAttribute("title", element.title += "\nCampo está vazio!");
         }
         errCount++
     }
@@ -752,7 +752,7 @@ function numValidationHover(id){
 function numValidationBlur(id){
 
     if(!isCreatingAccount()){
-        return
+        return;
     }
 
     let element = $("#" + id);
@@ -767,7 +767,7 @@ function numValidationBlur(id){
 function streetValidationBlur(id){
 
     if(!isCreatingAccount()){
-        return
+        return;
     }
 
     let element = $("#" + id);
@@ -796,7 +796,7 @@ function productNameValidationHover(id){
         if(element.title.length < 1){
             element.setAttribute("title", element.title += "Campo está vazio!");
         } else {
-            element.setAttribute("title", element.title += "\nCampo está vazio!")
+            element.setAttribute("title", element.title += "\nCampo está vazio!");
         }
     }
 
@@ -804,7 +804,7 @@ function productNameValidationHover(id){
         if(element.title.length < 1){
             element.setAttribute("title", element.title += "Campo contém números!");
         } else {
-            element.setAttribute("title", element.title += "\nCampo contém números!")
+            element.setAttribute("title", element.title += "\nCampo contém números!");
         }
     }
 
@@ -817,7 +817,7 @@ function productPriceValidationHover(id){
         if(element.title.length < 1){
             element.setAttribute("title", element.title += "Campo está vazio!");
         } else {
-            element.setAttribute("title", element.title += "\nCampo está vazio!")
+            element.setAttribute("title", element.title += "\nCampo está vazio!");
         }
     }
 
@@ -825,7 +825,7 @@ function productPriceValidationHover(id){
         if(element.title.length < 1){
             element.setAttribute("title", element.title += "Não oferecemos produtos com preço acima de 1000 R$!");
         } else {
-            element.setAttribute("title", element.title += "\nNão oferecemos produtos com preço acima de 1000 R$!")
+            element.setAttribute("title", element.title += "\nNão oferecemos produtos com preço acima de 1000 R$!");
         }
     }
 
@@ -847,21 +847,21 @@ function productPriceValidationBlur(id){
 
 function checkIfAnyErrors(){
 
-    nameValidationBlur("input-username")
-    nameValidationBlur("input-fath")
-    nameValidationBlur("input-moth")
-    emailValidationBlur('input-email')
-    passwordValidationBlur('input-pass', 'input-pass-again')
-    repeatPasswordValidationBlur('input-pass-again', 'input-pass')
-    cpfBlur("input-cpf")
-    cpfBlur('input-fath-cpf')
-    cpfBlur('input-moth-cpf')
-    ageValidationBlur("input-age")
+    nameValidationBlur("input-username");
+    nameValidationBlur("input-fath");
+    nameValidationBlur("input-moth");
+    emailValidationBlur('input-email');
+    passwordValidationBlur('input-pass', 'input-pass-again');
+    repeatPasswordValidationBlur('input-pass-again', 'input-pass');
+    cpfBlur("input-cpf");
+    cpfBlur('input-fath-cpf');
+    cpfBlur('input-moth-cpf');
+    ageValidationBlur("input-age");
     if($("#other-gen").is(":visible")){
-        otherGenderValidator()
+        otherGenderValidator();
     }
     cepValidationBlur("input-cep");
-    streetValidationBlur('input-street')
+    streetValidationBlur('input-street');
     numValidationBlur('input-num')
     cdcValidationBlur("input-cdc");
 
