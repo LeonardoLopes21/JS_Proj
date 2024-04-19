@@ -14,15 +14,15 @@ function printCards(json){
     let fullString = ""
 
     for(let i in json){
-        fullString += returnCard(json[i].id, json[i].name, json[i].price, json[i].url)
+        fullString += returnCard(json[i].id, json[i].name, json[i].price, json[i].url);
     }
 
-    return fullString
+    return fullString;
 }
 
 function addToHtml(id, string){
 
-    const filler = document.getElementsByClassName(id)
+    const filler = document.getElementsByClassName(id);
     filler[0].innerHTML = string;
 
 }

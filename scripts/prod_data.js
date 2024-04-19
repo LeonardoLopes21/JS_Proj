@@ -51,7 +51,8 @@ function insert(){
     if(checkIfAnyErrorsProd() < 1){
         prods.push(newProd)
         localStorage.setItem("prodlist",JSON.stringify(prods));
-        addToHtml("prods-grid", printCards(prods))
+        addToHtml("prods-grid", printCards(prods));
+        goHome();
 
     }
     

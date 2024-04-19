@@ -64,8 +64,8 @@ function registerUser(){
         return
     } else {
         userList.push(newUser)
-        localStorage.setItem("userlist",JSON.stringify(userList))
-        $("#input-pass").val("")
+        localStorage.setItem("userlist",JSON.stringify(userList));
+        $("#input-pass").val("");
         switchToLogin();
         goHome();
     }
