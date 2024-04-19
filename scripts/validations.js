@@ -350,6 +350,9 @@ function repeatPasswordValidationBlur(id, idorigin){
 
 
 function adjustCPF(string){
+    if(string == null || string == undefined){
+        return "";
+    }
     let newString = string.replace(".", "");
     newString = newString.replace(".", "");
     newString = newString.replace("-", "");
@@ -485,8 +488,10 @@ function cpfBlur(id){
 
     let element = $("#" + id);
     let text = element.val();
-    text = adjustCPF(text);
-    element.val(text)
+    if(text.length > 0){
+        text = adjustCPF(text);
+        element.val(text)
+    }
     if(isEmpty(id) || element.val().length < 14){
         element.addClass("red-error");
     } else {
@@ -663,7 +668,7 @@ function otherGenderValidator(){
 function streetValidationHover(id){
 
     if(!isCreatingAccount()){
-        return
+        return ""
     }
     let element = $("#" + id)[0];
     element.setAttribute("title", "")

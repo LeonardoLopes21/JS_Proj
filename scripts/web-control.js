@@ -104,14 +104,14 @@ function goHome(){
 }
 
 function hider(className){
-    const obj = document.getElementsByClassName(className)
+    const obj = document.getElementsByClassName(className);
     obj[0].style.display="none"
 
 }
 
 function shower(className){
-    const obj = document.getElementsByClassName(className)
-    obj[0].style.display="inline-block"
+    const obj = document.getElementsByClassName(className);
+    obj[0].style.display="inline-block";
 }
 
 //===============================================================
@@ -119,7 +119,7 @@ function shower(className){
 function valueIsInArray(val, arr){
     for(let i in arr){
         if(arr[i] == val){
-            return true
+            return true;
         }
     }
 
