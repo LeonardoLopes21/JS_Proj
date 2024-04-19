@@ -348,6 +348,20 @@ function repeatPasswordValidationBlur(id, idorigin){
 
 }
 
+
+function adjustCPF(string){
+    let newString = string.replace(".", "");
+    newString = newString.replace(".", "");
+    newString = newString.replace("-", "");
+
+    let stringArr = newString.match(/.{1,3}/g)
+    let cpfend = stringArr.pop();
+
+    let finalString = (stringArr.join('.') + "-" + cpfend);
+
+    return finalString;
+}
+
 function cpfAdjusting(id){
 
     let input = $("#" + id)
@@ -470,6 +484,9 @@ function cpfBlur(id){
     
 
     let element = $("#" + id);
+    let text = element.val();
+    text = adjustCPF(text);
+    element.val(text)
     if(isEmpty(id) || element.val().length < 14){
         element.addClass("red-error");
     } else {
@@ -612,6 +629,7 @@ function cdcValidationBlur(id){
     }
 
 }
+
 
 function otherGenHover(id){
 
